@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta charset="utf-8">
+   <title>Destroy</title>
+ </head>
+ <body>
+   <h1>Are you sure you want to delete this course?</h1>
+   <table>
+     <tr>
+       <th>ID</th>
+       <th>Course Name</th>
+       <th>Course Description</th>
+     </tr>
+
+
+   {% for course in specificcourse %}
+     <tr>
+       <td>{{course.id}}</td>
+       <td>{{course.course_name}}</td>
+       <td>{{course.description}}</td>
+
+       <td><form class="" action="/deleteconfirmation/{{course.id}}" method="post">
+         {% csrf_token %}
+        <input type="submit" name="deleteconfirm" value="delete">
+
+       </form></td>
+       <td><form class="" action="/noDelete" method="post">
+          {% csrf_token %}
+         <input type="submit" name="nodelete" value="no">
+       </form></td>
+     </tr>
+   {% endfor %}
+
+
+  </table>
+ </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Index Page</title>
+    <style>
+    .flashmessages{
+      color: red;
+      font-size: 20px;
+    }
+    </style>
+  </head>
+  <body>
+
+    <h1>Registration</h1>
+
+    <form class="" action="/newregister" method="post">
+      {% csrf_token %}
+      <p>First Name:</p>
+      <input type="text" name="first_name" value="">
+      <p>Last Name:</p>
+      <input type="text" name="last_name" value="">
+      <p>Email:</p>
+      <input type="text" name="email" value="">
+      <p>Password:</p>
+      <input type="text" name="password" value="">
+      <p>Confirm Password:</p>
+      <input type="text" name="confirmpassword" value="">
+      <input type="submit" name="register" value="register">
+    </form>
+
+
+    <h1>Login</h1>
+
+
+    <form class="" action="/loginregister" method="post">
+      {% csrf_token %}
+      <p>Email:</p>
+      <input type="text" name="Email" value="">
+      <p>Password:</p>
+      <input type="password" name="Password" value="">
+      <input type="submit" name="login" value="login">
+    </form>
+
+    {% if messages %}
+      {% for message in messages %}
+        <div class="flashmessages">
+          {{message}}
+        </div>
+      {% endfor %}
+    {% endif %}
+
+  </body>
+</html>
